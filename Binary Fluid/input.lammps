@@ -34,6 +34,7 @@ minimize 1.0e-4 1.0e-6 10000 100000
 # 2. Molecular Dynamics
 #### Visualization ####
 thermo 50
+dump mydmp all atom 100 dump.lammpstrj
 
 #### Running Simulation ####
 fix myenv all nve
