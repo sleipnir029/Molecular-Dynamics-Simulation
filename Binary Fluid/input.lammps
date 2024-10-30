@@ -26,4 +26,4 @@ thermo 10
 thermo_style custom step temp pe ke etotal press
 
 #### Running Simulation ####
-minimize 1.0e-4 1.0e-6 1000 10000
+minimize 0 1.0e-6 10000 100000

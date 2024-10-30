@@ -18,17 +18,112 @@ create_atoms 1 random 1500 341341 simulation_box
 Created 1500 atoms
   using lattice units in orthogonal box = (-20 -20 -20) to (20 20 20)
   create_atoms CPU = 0.001 seconds
-create_atoms 1 random 100 127569 simulation_box
+create_atoms 2 random 100 127569 simulation_box
 Created 100 atoms
   using lattice units in orthogonal box = (-20 -20 -20) to (20 20 20)
   create_atoms CPU = 0.000 seconds
 
-
 #### Simualtion Settings ####
-
+mass 1 1
+mass 2 1
+# mass * 1
+pair_coeff 1 1 1.0 1.0
+pair_coeff 2 2 0.5 3.0
+# pair_coeff 1 2 0.707 1.732    # geometric average, arithmetic rule could also be used
 
 #### Visualisation ####
-
+thermo 10
+thermo_style custom step temp pe ke etotal press
 
 #### Running Simulation ####
+minimize 0 1.0e-6 10000 100000
+Generated 1 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.8
+  ghost atom cutoff = 2.8
+  binsize = 1.4, bins = 29 29 29
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 6.883 | 6.883 | 6.883 Mbytes
+   Step          Temp          PotEng         KinEng         TotEng         Press     
+         0   0              78840982       0              78840982       7884122      
+        10   0              169.90532      0              169.90532      17.187291    
+        20   0             -0.22335386     0             -0.22335386    -0.0034892297 
+        30   0             -0.31178296     0             -0.31178296    -0.0027290466 
+        40   0             -0.38135002     0             -0.38135002    -0.0016419218 
+        50   0             -0.42686621     0             -0.42686621    -0.0015219081 
+        60   0             -0.46153953     0             -0.46153953    -0.0010659992 
+        70   0             -0.48581568     0             -0.48581568    -0.0014849169 
+        80   0             -0.51799572     0             -0.51799572    -0.0012995545 
+        90   0             -0.5527325      0             -0.5527325     -0.0013134141 
+       100   0             -0.57968749     0             -0.57968749    -0.0011100224 
+       110   0             -0.60215558     0             -0.60215558    -0.00098759057
+       120   0             -0.62309042     0             -0.62309042    -0.00087882184
+       130   0             -0.64171723     0             -0.64171723    -0.00079695034
+       140   0             -0.66426829     0             -0.66426829    -0.00078657228
+       150   0             -0.68078114     0             -0.68078114    -0.00057901331
+       160   0             -0.69138845     0             -0.69138845    -0.00052420675
+       170   0             -0.69940121     0             -0.69940121    -0.00052256154
+       180   0             -0.71193158     0             -0.71193158    -0.00065164675
+       190   0             -0.72444253     0             -0.72444253    -0.00077771303
+       200   0             -0.74303883     0             -0.74303883    -0.00063483736
+       210   0             -0.75639471     0             -0.75639471    -0.00056452717
+       220   0             -0.76893784     0             -0.76893784    -0.00066353705
+       230   0             -0.78603789     0             -0.78603789    -0.00066692535
+       240   0             -0.80185632     0             -0.80185632    -0.00061616173
+       250   0             -0.81715265     0             -0.81715265    -0.00058302102
+       260   0             -0.82730607     0             -0.82730607    -0.00047362884
+       270   0             -0.84026106     0             -0.84026106    -0.00054670787
+       280   0             -0.85125656     0             -0.85125656    -0.00035703504
+       290   0             -0.86096733     0             -0.86096733    -0.00037583747
+       300   0             -0.86958584     0             -0.86958584    -0.00037128581
+       310   0             -0.88255601     0             -0.88255601    -0.00054866243
+       320   0             -0.89420702     0             -0.89420702    -0.00036482107
+       330   0             -0.90568614     0             -0.90568614    -0.00028402643
+       340   0             -0.91773912     0             -0.91773912    -0.00030476926
+       350   0             -0.9266843      0             -0.9266843     -0.00035936544
+       360   0             -0.93512548     0             -0.93512548    -0.00041651736
+       370   0             -0.94359096     0             -0.94359096    -0.0004220538 
+       380   0             -0.95310667     0             -0.95310667    -0.00024244201
+       381   0             -0.95310667     0             -0.95310667    -0.00024244201
+Loop time of 0.0785336 on 16 procs for 381 steps with 1600 atoms
+
+80.5% CPU use with 4 MPI tasks x 4 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      78840982.4763646 -0.953106674030022 -0.953106674030022
+  Force two-norm initial, final = 1.6033542e+13 15.292371
+  Force max component initial, final = 1.0518609e+13 5.4676463
+  Final line search alpha, max atom move = 7.8125413e-08 4.2716213e-07
+  Iterations, force evaluations = 381 791
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.006663   | 0.0077454  | 0.009062   |   1.1 |  9.86
+Neigh   | 0.010963   | 0.012296   | 0.013572   |   0.9 | 15.66
+Comm    | 0.021198   | 0.029172   | 0.036586   |   4.0 | 37.15
+Output  | 0.00027704 | 0.00032522 | 0.0004485  |   0.0 |  0.41
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.02899    |            |       | 36.92
+
+Nlocal:            400 ave         426 max         362 min
+Histogram: 1 0 0 0 1 0 0 0 1 1
+Nghost:         329.25 ave         334 max         323 min
+Histogram: 1 0 0 0 1 0 0 0 1 1
+Neighs:         544.25 ave         646 max         453 min
+Histogram: 1 1 0 0 0 0 0 1 0 1
+
+Total # of neighbors = 2177
+Ave neighs/atom = 1.360625
+Neighbor list builds = 134
+Dangerous builds = 0
 Total wall time: 0:00:00
