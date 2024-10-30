@@ -1,0 +1,23 @@
+# Sequence matters* as the script is read top-2-bottom
+
+#### Initialization ####
+units lj
+dimension 3
+atom_style atomic
+pair_style lj/cut 2.5
+boundary p p p
+
+#### System Definition ####
+region simulation_box block -20 20 -20 20 -20 20
+create_box 2 simulation_box
+create_atoms 1 random 1500 341341 simulation_box
+create_atoms 1 random 100 127569 simulation_box
+
+
+#### Simualtion Settings ####
+
+
+#### Visualisation ####
+
+
+#### Running Simulation ####
