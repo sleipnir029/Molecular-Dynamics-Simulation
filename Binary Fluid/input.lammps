@@ -22,6 +22,8 @@ pair_coeff 2 2 0.5 3.0
 # pair_coeff 1 2 0.707 1.732    # geometric average, arithmetic rule could also be used
 
 #### Visualisation ####
-
+thermo 10
+thermo_style custom step temp pe ke etotal press
 
 #### Running Simulation ####
+minimize 1.0e-4 1.0e-6 1000 10000
