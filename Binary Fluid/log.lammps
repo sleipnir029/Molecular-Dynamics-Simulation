@@ -1,6 +1,5 @@
 LAMMPS (29 Aug 2024)
-OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
-  using 1 OpenMP thread(s) per MPI task
+  using 4 OpenMP thread(s) per MPI task
 # Sequence matters* as the script is read top-2-bottom
 
 #### Initialization ####
@@ -11,6 +10,18 @@ pair_style lj/cut 2.5
 boundary p p p
 
 #### System Definition ####
+region simulation_box block -20 20 -20 20 -20 20
+create_box 2 simulation_box
+Created orthogonal box = (-20 -20 -20) to (20 20 20)
+  1 by 2 by 2 MPI processor grid
+create_atoms 1 random 1500 341341 simulation_box
+Created 1500 atoms
+  using lattice units in orthogonal box = (-20 -20 -20) to (20 20 20)
+  create_atoms CPU = 0.001 seconds
+create_atoms 1 random 100 127569 simulation_box
+Created 100 atoms
+  using lattice units in orthogonal box = (-20 -20 -20) to (20 20 20)
+  create_atoms CPU = 0.000 seconds
 
 
 #### Simualtion Settings ####

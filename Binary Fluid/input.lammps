@@ -11,11 +11,11 @@ boundary p p p
 region simulation_box block -20 20 -20 20 -20 20
 create_box 2 simulation_box
 create_atoms 1 random 1500 341341 simulation_box
-create_atoms 1 random 100 127569 simulation_box
-
+create_atoms 2 random 100 127569 simulation_box
 
 #### Simualtion Settings ####
-
+mass 1 1
+mass 2 1
 
 #### Visualisation ####
 
