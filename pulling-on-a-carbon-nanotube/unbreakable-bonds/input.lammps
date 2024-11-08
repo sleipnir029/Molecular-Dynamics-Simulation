@@ -81,3 +81,9 @@ thermo_modify temp Tmid
 
 timestep 1.0
 run 5000
+
+# impose a velocity deformation on CNT by combining ***velocity set*** command with previous
+# ***fix setforce***
+velocity carbon_top set 0 0 0.0005
+velocity carbon_bot set 0 0 -0.0005
+run 10000
