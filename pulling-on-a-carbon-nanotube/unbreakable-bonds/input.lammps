@@ -13,3 +13,5 @@ improper_style harmonic
 special_bonds lj 0.0 0.0 0.5
 
 read_data cnt_molecular.data
+
+include parm.lammps
