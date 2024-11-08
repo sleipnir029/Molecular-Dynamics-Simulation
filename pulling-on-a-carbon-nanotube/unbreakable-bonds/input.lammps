@@ -32,3 +32,8 @@ variable zmin equal bound(carbon_atoms, zmin)+0.5
 region rtop block INF INF INF INF ${zmax} INF
 region rbot block INF INF INF INF INF ${zmin}
 region rmid block INF INF INF INF ${zmin} ${zmax}
+
+# defining 3 groups of atoms corresponding to the 3 regions respectively
+group carbon_top region rtop
+group carbon_bot region rbot
+group carbon_mid region rmid
