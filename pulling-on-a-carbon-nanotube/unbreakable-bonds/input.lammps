@@ -18,17 +18,17 @@ include parm.lammps
 
 # recentering CNT
 group carbon_atoms type 1
-variable carbon_xcm equal -1*xcm(carbon_atoms, x)
-variable carbon_ycm equal -1*xcm(carbon_atoms, y)
-variable carbon_zcm equal -1*xcm(carbon_atoms, z)
+variable carbon_xcm equal -1*xcm(carbon_atoms,x)
+variable carbon_ycm equal -1*xcm(carbon_atoms,y)
+variable carbon_zcm equal -1*xcm(carbon_atoms,z)
 displace_atoms carbon_atoms move ${carbon_xcm} ${carbon_ycm} ${carbon_zcm}
 
 # changing box boundaries - making the inital state symmetrical
 change_box all x final -40 40 y final -40 40 z final -40 40
 
 # isolating atoms from two edges as displacement will be imposed on the edges of the CNT
-variable zmax equal bound(carbon_atoms, zmax)-0.5
-variable zmin equal bound(carbon_atoms, zmin)+0.5
+variable zmax equal bound(carbon_atoms,zmax)-0.5
+variable zmin equal bound(carbon_atoms,zmin)+0.5
 region rtop block INF INF INF INF ${zmax} INF
 region rbot block INF INF INF INF INF ${zmin}
 region rmid block INF INF INF INF ${zmin} ${zmax}
@@ -64,7 +64,7 @@ velocity carbon_top set 0 0 0
 velocity carbon_bot set 0 0 0
 
 #### Data extraction ####
-variable L equal xcm(carbon_top, z)-xcm(carbon_bot, z)
+variable L equal xcm(carbon_top,z)-xcm(carbon_bot,z)
 fix at1 all ave/time 10 10 100 v_L file output_cnt_length.dat
 fix at2 all ave/time 10 10 100 f_mysf1[1] f_mysf2[1] file output_edge_force.dat
 
