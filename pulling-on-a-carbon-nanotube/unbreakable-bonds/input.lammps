@@ -37,3 +37,13 @@ region rmid block INF INF INF INF ${zmin} ${zmax}
 group carbon_top region rtop
 group carbon_bot region rbot
 group carbon_mid region rmid
+
+# introducing a less ideal state with some defects where we randomly delete a samll fraction
+# of carbon atoms. To avoid deleting atoms closed to edge we create a new refion that 
+# starts a certaing distance from the edge
+variable zmax_del equal ${zmax}-2
+variable zmin_del equal ${zmin}+2
+region rdel block INF INF INF INF ${zmin_del} ${zmax_del}
+group rdel region rdel
+delete_atoms random fraction 0.02 no rdel NULL 482793 bond yes # what happened here!
+
