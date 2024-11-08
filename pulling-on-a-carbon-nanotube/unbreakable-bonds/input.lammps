@@ -47,3 +47,13 @@ region rdel block INF INF INF INF ${zmin_del} ${zmax_del}
 group rdel region rdel
 delete_atoms random fraction 0.02 no rdel NULL 482793 bond yes # what happened here!
 
+#### Molecular Dynamics
+
+# specifying thermalization and dynamics of the system
+reset_atoms id sort yes
+velocity carbon_mid create ${T} 48455 mom yes rot yes
+fix myenv all nve
+compute Tmid carbon_mid temp
+fix myber carbon_mid temp/berendsen ${T} ${T} 100
+fix_modify myber temp Tmid
+
