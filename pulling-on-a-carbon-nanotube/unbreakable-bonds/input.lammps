@@ -70,3 +70,14 @@ fix at2 all ave/time 10 10 100 f_mysf1[1] f_mysf2[1] file output_edge_force.dat
 
 # print co-ordinates of atom every 1000 steps
 dump mydump all atom 1000 dump.lammpstrj
+
+# check temperature of non-frozen group over time
+fix at3 all ave/time 10 10 100 c_Tmid file output_temperature_non_frozen_group.dat
+
+# run a small equilibration step to bring the system to the required temperature
+# before applying any deformation
+thermo 100
+thermo_modify temp Tmid
+
+timestep 1.0
+run 5000
