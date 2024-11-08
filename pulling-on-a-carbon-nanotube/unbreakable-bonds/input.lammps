@@ -25,3 +25,10 @@ displace_atoms carbon_atoms move ${carbon_xcm} ${carbon_ycm} ${carbon_zcm}
 
 # changing box boundaries - making the inital state symmetrical
 change_box all x final -40 40 y final -40 40 z final -40 40
+
+# isolating atoms from two edges as displacement will be imposed on the edges of the CNT
+variable zmax equal bound(carbon_atoms, zmax)-0.5
+variable zmin equal bound(carbon_atoms, zmin)+0.5
+region rtop block INF INF INF INF ${zmax} INF
+region rbot block INF INF INF INF INF ${zmin}
+region rmid block INF INF INF INF ${zmin} ${zmax}
