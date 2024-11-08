@@ -22,3 +22,6 @@ variable carbon_xcm equal -1*xcm(carbon_atoms, x)
 variable carbon_ycm equal -1*xcm(carbon_atoms, y)
 variable carbon_zcm equal -1*xcm(carbon_atoms, z)
 displace_atoms carbon_atoms move ${carbon_xcm} ${carbon_ycm} ${carbon_zcm}
+
+# changing box boundaries - making the inital state symmetrical
+change_box all x final -40 40 y final -40 40 z final -40 40
